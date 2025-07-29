@@ -1,0 +1,283 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Orbitron:wght@400;700;900&display=swap');
+
+:root {
+  --background: hsl(0, 0%, 4%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 10.2%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+
+  /* Cyberpunk Colors */
+  --matrix: hsl(120, 100%, 63%);
+  --cyber: hsl(189, 100%, 50%);
+  --neon-pink: hsl(324, 100%, 50%);
+  --electric: hsl(60, 100%, 50%);
+  --dark-bg: hsl(0, 0%, 4%);
+  --dark-card: hsl(0, 0%, 10%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-mono antialiased bg-[var(--dark-bg)] text-foreground overflow-x-hidden;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .font-orbitron {
+    font-family: 'Orbitron', sans-serif;
+  }
+}
+
+/* Custom Cyberpunk Animations */
+@keyframes glow {
+  0% { 
+    box-shadow: 0 0 5px var(--matrix), 0 0 10px var(--matrix), 0 0 15px var(--matrix);
+  }
+  100% { 
+    box-shadow: 0 0 10px var(--matrix), 0 0 20px var(--matrix), 0 0 30px var(--matrix);
+  }
+}
+
+@keyframes typewriter {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes matrix-scroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+
+@keyframes hologram {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Utility Classes */
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.animate-typewriter {
+  animation: typewriter 3s steps(40) 1s 1 normal both;
+  overflow: hidden;
+  border-right: 2px solid var(--matrix);
+  white-space: nowrap;
+}
+
+.animate-glitch {
+  animation: glitch 0.3s ease-in-out;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.matrix-bg {
+  background: linear-gradient(45deg, transparent 30%, rgba(0, 255, 65, 0.1) 50%, transparent 70%);
+  background-size: 20px 20px;
+  animation: matrix-scroll 20s linear infinite;
+}
+
+.holographic {
+  background: linear-gradient(45deg, rgba(0, 255, 65, 0.3), rgba(0, 217, 255, 0.3), rgba(255, 0, 128, 0.3));
+  background-size: 400% 400%;
+  animation: hologram 3s ease-in-out infinite;
+}
+
+.nft-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  transition: all 0.3s ease;
+}
+
+.story-reveal {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.5s ease;
+}
+
+.story-reveal.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Color Utilities */
+.text-matrix {
+  color: var(--matrix);
+}
+
+.text-cyber {
+  color: var(--cyber);
+}
+
+.text-neon-pink {
+  color: var(--neon-pink);
+}
+
+.text-electric {
+  color: var(--electric);
+}
+
+.bg-matrix {
+  background-color: var(--matrix);
+}
+
+.bg-cyber {
+  background-color: var(--cyber);
+}
+
+.bg-neon-pink {
+  background-color: var(--neon-pink);
+}
+
+.bg-electric {
+  background-color: var(--electric);
+}
+
+.bg-dark-bg {
+  background-color: var(--dark-bg);
+}
+
+.bg-dark-card {
+  background-color: var(--dark-card);
+}
+
+.border-matrix {
+  border-color: var(--matrix);
+}
+
+.border-cyber {
+  border-color: var(--cyber);
+}
+
+.border-neon-pink {
+  border-color: var(--neon-pink);
+}
+
+.border-electric {
+  border-color: var(--electric);
+}
+
+/* Hover Utilities */
+.hover\:bg-matrix:hover {
+  background-color: var(--matrix);
+}
+
+.hover\:bg-cyber:hover {
+  background-color: var(--cyber);
+}
+
+.hover\:bg-neon-pink:hover {
+  background-color: var(--neon-pink);
+}
+
+.hover\:bg-electric:hover {
+  background-color: var(--electric);
+}
+
+.hover\:text-matrix:hover {
+  color: var(--matrix);
+}
+
+.hover\:text-cyber:hover {
+  color: var(--cyber);
+}
+
+.hover\:text-neon-pink:hover {
+  color: var(--neon-pink);
+}
+
+.hover\:text-electric:hover {
+  color: var(--electric);
+}
+
+.hover\:border-matrix:hover {
+  border-color: var(--matrix);
+}
+
+.hover\:border-cyber:hover {
+  border-color: var(--cyber);
+}
+
+.hover\:border-neon-pink:hover {
+  border-color: var(--neon-pink);
+}
+
+.hover\:border-electric:hover {
+  border-color: var(--electric);
+}
+
+/* Shadow Utilities */
+.hover\:shadow-matrix:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+}
+
+.hover\:shadow-cyber:hover {
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+}
+
+.hover\:shadow-neon-pink:hover {
+  box-shadow: 0 0 20px rgba(255, 0, 128, 0.3);
+}
+
+.hover\:shadow-electric:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
+}
